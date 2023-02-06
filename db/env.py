@@ -6,7 +6,10 @@ from sqlalchemy import pool
 from alembic import context
 
 from models.base import Base
-from models.user import User
+
+# import all models for alembic autogenerations
+from models.users import User
+from models.pins import Pin
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

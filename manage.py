@@ -10,6 +10,8 @@ app = FastAPI()
 
 #Include views
 from views.users import users_api_router
+from views.pins import pins_api_router
 
 app.include_router(users_api_router)
+app.include_router(pins_api_router)
 

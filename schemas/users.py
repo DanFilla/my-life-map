@@ -1,13 +1,13 @@
 from pydantic import BaseModel
 
-class UserBase(BaseModel):
-    pass
+from schemas.base import BaseCreateSchema, BaseResponseSchema
 
-class UserCreate(UserBase):
+
+class UserCreateSchema(BaseCreateSchema):
     description: str
 
-class User(UserBase):
-    id: int
+
+class UserResponseSchema(BaseResponseSchema):
     description: str
 
     class Config:
