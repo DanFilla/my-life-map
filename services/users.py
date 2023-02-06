@@ -13,6 +13,7 @@ class UserService:
         db_user = User(description=user.description)
         db.add(db_user)
         db.commit()
+
         db.refresh(db_user)
         return db_user
 

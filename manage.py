@@ -2,10 +2,9 @@ import logging
 import sqlalchemy
 from fastapi import FastAPI
 
+from libs.logger import init_logger
 
-log = logging.getLogger("my-api")
-FORMAT = "%(levelname)s:%(message)s"
-logging.basicConfig(format=FORMAT, level=logging.DEBUG)
+init_logger(logging.DEBUG)
 
 app = FastAPI()
 
