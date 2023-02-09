@@ -25,6 +25,6 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
     return user_service.get_one_by_id(id=user_id, db=db)
 
 @users_api_router.delete("/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
-def get_user(user_id: int, db: Session = Depends(get_db)):
+def delete_user(user_id: int, db: Session = Depends(get_db)):
     user_service.delete_one_by_id(id=user_id, db=db)
 
