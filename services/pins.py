@@ -1,24 +1,23 @@
+import logging
+
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from schemas.pins import PinCreateSchema
 from models.pins import Pin
 
-class PinService:
+from services.base import BaseService
 
-    def get_pin(self, pin_id: int, db: Session):
-        return db.query(Pin).filter(Pin.id == pin_id).first()
+logger = logging.getLogger(__name__)
 
+class PinService(BaseService[Pin, PinCreateSchema]):
+
+    def get_one_by_id(self, pin_id: int, db: Session, *args, **kwargs):
+        return super().get_one_by_id(id=pin_id, db=db)
     
-    def create_pin(self, pin: PinCreateSchema, db: Session):
-
+    def create_one(self, pin: PinCreateSchema, db: Session, *args, **kwargs):
         if abs(pin.longitude) > 180 or abs(pin.latitude) > 180:
             raise HTTPException(status_code=422, detail="improper format for coordinates")
 
-        db_pin= Pin(longitude=pin.longitude, latitude=pin.latitude)
-        db.add(db_pin)
-        db.commit()
-
-        db.refresh(db_pin)
-        return db_pin
+        return super().create_one(create_schema=pin, db=db)
 
