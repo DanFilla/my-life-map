@@ -3,6 +3,7 @@ from fastapi import HTTPException
 from fastapi.encoders import jsonable_encoder
 from typing import TypeVar, Generic, Type
 from sqlalchemy.orm import Session
+from sqlalchemy import delete
 
 from schemas.base import BaseCreateSchema
 
@@ -19,7 +20,7 @@ class BaseService(Generic[ModelType, CreateSchemaType]):
     def __init__(self, model: Type[ModelType]):
         self.model = model
 
-    def get_one_by_id(self, id, db: Session):
+    def get_one_by_id(self, id: int, db: Session):
         retrived_resource = db.query(self.model).filter(self.model.id == id).first()
         if retrived_resource:
             return retrived_resource
@@ -35,4 +36,11 @@ class BaseService(Generic[ModelType, CreateSchemaType]):
 
         db.refresh(create_object)
         return create_object
+
+    def delete_one_by_id(self, id: int, db: Session):
+        retrived_resource = db.query(self.model).filter(self.model.id == id).first()
+
+        if retrived_resource:
+            db.delete(retrived_resource)
+            db.commit()
 
