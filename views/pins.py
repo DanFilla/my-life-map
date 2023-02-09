@@ -18,9 +18,9 @@ pin_service = PinService(model=PinModel)
 
 @pins_api_router.post("/pins", response_model=PinResponseSchema)
 def create_pin(pin: PinCreateSchema, db: Session = Depends(get_db)):
-    return pin_service.create_one(pin=pin, db=db)
+    return pin_service.create_one(create_schema=pin, db=db)
 
 @pins_api_router.get("/pins/{pin_id}", response_model=PinResponseSchema)
 def get_pin(pin_id: int, db: Session = Depends(get_db)):
-    return pin_service.get_one_by_id(pin_id=pin_id, db=db)
+    return pin_service.get_one_by_id(id=pin_id, db=db)
 
