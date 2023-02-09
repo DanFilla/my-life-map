@@ -1,9 +1,12 @@
 from tests.managers.base import BaseManager
 
 class UserManager(BaseManager):
+    def __init__(self, description, client):
+        self.description = description
+        super().__init__(client)
 
     def __enter__(self):
-        self.response = self.client.post("/users", json={"description": "From testing suite"})
+        self.response = self.client.post("/users", json={"description": self.description})
         return self.response
 
 
