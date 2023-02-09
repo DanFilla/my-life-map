@@ -15,6 +15,8 @@ def test_create_users():
     with UserManager(client=test_client, description=DESCRIPTION) as user:
         user_body = user.json()
 
+        logger.debug(user_body.get('id'))
+
         assert type(user_body.get('id')) == int
         assert user_body.get('description') == DESCRIPTION
 
