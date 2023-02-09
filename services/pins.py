@@ -4,13 +4,13 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from schemas.pins import PinCreateSchema
-from models.pins import Pin
+from models.pins import PinModel
 
 from services.base import BaseService
 
 logger = logging.getLogger(__name__)
 
-class PinService(BaseService[Pin, PinCreateSchema]):
+class PinService(BaseService[PinModel, PinCreateSchema]):
 
     def get_one_by_id(self, pin_id: int, db: Session, *args, **kwargs):
         return super().get_one_by_id(id=pin_id, db=db)

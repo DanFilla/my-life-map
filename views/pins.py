@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from schemas.pins import PinResponseSchema, PinCreateSchema
 from services.pins import PinService
-from models.pins import Pin
+from models.pins import PinModel
 
 from libs.db import get_db
 
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 pins_api_router = APIRouter()
 
-pin_service = PinService(model=Pin)
+pin_service = PinService(model=PinModel)
 
 
 @pins_api_router.post("/pins", response_model=PinResponseSchema)
