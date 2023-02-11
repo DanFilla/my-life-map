@@ -8,8 +8,8 @@ from alembic import context
 from models.base import Base
 
 # import all models for alembic autogenerations
-from models.users import User
-from models.pins import Pin
+from models.users import UserModel
+from models.pins import PinModel
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
