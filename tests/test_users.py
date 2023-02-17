@@ -9,20 +9,19 @@ test_client = TestClient(app)
 
 logger = logging.getLogger(__name__)
 
-DESCRIPTION = "This is a test description"
 
 def test_create_users():
-    with UserManager(client=test_client, description=DESCRIPTION) as user:
+    with UserManager(client=test_client) as user:
         user_body = user.json()
 
         logger.debug(user_body.get('id'))
 
         assert type(user_body.get('id')) == int
-        assert user_body.get('description') == DESCRIPTION
+        assert user_body.get('description') == UserManager.DEFAULT_USER_KWARGS.get('description')
 
 
 def test_read_users():
-    with UserManager(client=test_client, description=DESCRIPTION) as user:
+    with UserManager(client=test_client) as user:
         user_body = user.json()
         user_id = user_body.get('id')
 
