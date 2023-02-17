@@ -15,9 +15,11 @@ def test_create_users():
         user_body = user.json()
 
         logger.debug(user_body.get('id'))
+        user_id = user_body.pop("id")
 
-        assert type(user_body.get('id')) == int
-        assert user_body.get('description') == UserManager.DEFAULT_USER_KWARGS.get('description')
+        assert type(user_id) == int
+        #assert user_body.get('description') == UserManager.DEFAULT_USER_KWARGS.get('description')
+        assert user_body == UserManager.DEFAULT_USER_KWARGS
 
 
 def test_read_users():
