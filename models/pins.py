@@ -3,6 +3,7 @@ from sqlalchemy.orm import mapped_column, relationship
 
 from models.base import Base
 
+
 class PinModel(Base):
     __tablename__ = "pins"
 
@@ -10,6 +11,5 @@ class PinModel(Base):
     latitude = mapped_column(DECIMAL(8, 5))
     user_id = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
-    #relationships
+    # relationships
     user = relationship("UserModel", back_populates="pins")
-

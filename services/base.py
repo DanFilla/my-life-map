@@ -16,7 +16,6 @@ ModelType = TypeVar("ModelType", bound=Base)
 
 
 class BaseService(Generic[ModelType, CreateSchemaType]):
-
     def __init__(self, model: Type[ModelType]):
         self.model = model
 
@@ -43,4 +42,3 @@ class BaseService(Generic[ModelType, CreateSchemaType]):
         if retrived_resource:
             db.delete(retrived_resource)
             db.commit()
-

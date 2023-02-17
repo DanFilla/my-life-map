@@ -7,6 +7,6 @@ from models.users import UserModel
 
 logger = logging.getLogger(__name__)
 
+
 class UserService(BaseService[UserModel, UserCreateSchema]):
     pass
-

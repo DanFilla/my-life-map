@@ -20,4 +20,3 @@ class UserResponseSchema(BaseResponseSchema):
 
     class Config:
         orm_mode = True
-

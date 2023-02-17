@@ -8,4 +8,3 @@ from tests.managers.user import UserManager
 test_client = TestClient(app)
 
 logger = logging.getLogger(__name__)
-
