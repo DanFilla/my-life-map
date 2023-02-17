@@ -11,5 +11,5 @@ class PinModel(Base):
     user_id = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
     #relationships
-    user = relationship("UserModel")
+    user = relationship("UserModel", back_populates="pins")
 

@@ -13,4 +13,4 @@ class UserModel(Base):
     description = mapped_column(String(256))
 
     #relationships
-    pins = relationship("PinModel")
+    pins = relationship("PinModel", back_populates="user")
