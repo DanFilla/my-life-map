@@ -8,15 +8,15 @@ class UserCreateSchema(BaseCreateSchema):
     last_name: str | None
     email: str
     user_name: str
-    description: str
+    description: str | None
 
 
 class UserResponseSchema(BaseResponseSchema):
-    first_name: str
-    last_name: str
+    first_name: str | None
+    last_name: str | None
     email: str
     user_name: str
-    description: str
+    description: str | None
 
     class Config:
         orm_mode = True
