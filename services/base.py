@@ -1,4 +1,6 @@
 import logging
+from urllib.parse import urlencode
+
 from fastapi import HTTPException
 from fastapi.encoders import jsonable_encoder
 from typing import TypeVar, Generic, Type
@@ -13,7 +15,6 @@ logger = logging.getLogger(__name__)
 
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseCreateSchema)
 ModelType = TypeVar("ModelType", bound=Base)
-
 
 class BaseService(Generic[ModelType, CreateSchemaType]):
     def __init__(self, model: Type[ModelType]):
@@ -42,3 +43,14 @@ class BaseService(Generic[ModelType, CreateSchemaType]):
         if retrived_resource:
             db.delete(retrived_resource)
             db.commit()
+
+    def no_schema_create_one(self, db: Session, model_args: dict, *args, **kwargs):
+        encoded_create_schema = jsonable_encoder(model_args)
+
+        create_object = self.model(**encoded_create_schema)
+
+        db.add(create_object)
+        db.commit()
+
+        db.refresh(create_object)
+        return create_object
