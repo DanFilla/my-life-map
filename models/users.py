@@ -15,3 +15,4 @@ class UserModel(Base):
 
     # relationships
     pins = relationship("PinModel", back_populates="user")
+    audio_clips = relationship("AudioClipModel", back_populates="user")
