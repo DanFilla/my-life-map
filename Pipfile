@@ -7,9 +7,12 @@ name = "pypi"
 uvicorn = {extras = ["standard"], version = "==0.20.0"}
 fastapi = {extras = ["all"], version = "==0.88.0"}
 alembic = "==1.9.1"
-mysql = "==0.0.3"
 httpx = "==0.23.3"
 pytest = "==7.2.1"
+python-dotenv = "*"
+python-multipart = "*"
+boto3 = "*"
+awscli = "*"
 
 [dev-packages]
 black = "==23.1.0"
