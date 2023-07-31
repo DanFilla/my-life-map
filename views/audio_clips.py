@@ -3,7 +3,7 @@ import logging
 from fastapi import APIRouter, Depends, status, UploadFile, File, Form
 from sqlalchemy.orm import Session
 
-from schemas.audio_clips import AudioClipCreateSchema, AudioClipResponseSchema
+from schemas.audio_clips import AudioClipResponseSchema
 from services.audio_clips import AudioClipService
 from models.audio_clips  import AudioClipModel
 
