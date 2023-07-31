@@ -11,8 +11,10 @@ class AudioClipCreateSchema(BaseCreateSchema):
 
 
 class AudioClipResponseSchema(BaseResponseSchema):
-    #s3_url: str
-    user_id: int
+    s3_url: str
+    creator_id: int
+    id: int
+    file_key: str
 
     class Config:
         orm_mode = True
